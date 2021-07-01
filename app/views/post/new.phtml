@@ -1,0 +1,26 @@
+<div class="controller-output"><?php echo $this->getContent(); ?></div>
+<h2>Crea un nuovo post</h2>
+<?php echo $this->tag->form("post/create"); ?>
+<p>
+    <label for="title">Titolo</label>
+    <?php echo $this->tag->textField("title"); ?>
+</p>
+<p>
+    <label for="body">Testo</label>
+    <?php echo $this->tag->textField("body"); ?>
+</p>
+<p>
+    <select name="category_id" id="">
+        <?php foreach ($categories as $category) { ?>
+        <option value="<?php echo $category->category_id; ?>">
+            <?php echo $category->title; ?>
+        </option>
+        <?php } ?>
+
+    </select>
+</p>
+
+<p>
+    <?php echo $this->tag->submitButton("Create"); ?>
+</p>
+</form>

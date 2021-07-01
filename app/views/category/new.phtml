@@ -1,0 +1,25 @@
+<div class="container_btn">
+    <div class="page-header">
+        <h1>PhalconPress</h1>
+    </div>
+    <?php 
+    
+    if (session_status() === PHP_SESSION_ACTIVE) {  ?>
+    <div><?php echo $this->tag->linkTo(['session/quit', 'Log Out', 'class' => 'btn btn-primary']); ?></div>
+    <?php
+    } else {?>
+    <div><?php echo $this->tag->linkTo(['signup', 'Sign Up', 'class' => 'btn btn-primary']); ?></div>
+    <div><?php echo $this->tag->linkTo(['session', 'Log In', 'class' => 'btn btn-primary']); ?></div>
+    <?php
+    } ?>
+</div>
+<h2>Crea una nuova Categoria</h2>
+<?php echo $this->tag->form("category/create"); ?>
+<p>
+    <label for="title">Titolo</label>
+    <?php echo $this->tag->textField("title"); ?>
+</p>
+<p>
+    <?php echo $this->tag->submitButton("Create"); ?>
+</p>
+</form>

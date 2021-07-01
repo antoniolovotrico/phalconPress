@@ -1,0 +1,42 @@
+<div class="container_btn">
+    <div class="page-header">
+        <h1>PhalconPress</h1>
+    </div>
+    <?php 
+    
+    if (session_status() === PHP_SESSION_ACTIVE) {  ?>
+    <div><?php echo $this->tag->linkTo(['session/quit', 'Log Out', 'class' => 'btn btn-primary']); ?></div>
+    <?php
+    } else {?>
+    <div><?php echo $this->tag->linkTo(['signup', 'Sign Up', 'class' => 'btn btn-primary']); ?></div>
+    <div><?php echo $this->tag->linkTo(['session', 'Log In', 'class' => 'btn btn-primary']); ?></div>
+    <?php
+    } ?>
+</div>
+<?php
+if ($categories->count() > 0) {
+    ?>
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Titolo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($categories as $category) { ?>
+        <tr>
+            <td><?php echo $category->category_id; ?></td>
+            <td><?php echo $category->title; ?></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<?php
+}?>
+
+<div class="container_btn">
+    <div><?php echo $this->tag->linkTo(['category/new', 'New Category', 'class' => 'btn btn-primary']); ?></div>
+    <div><?php echo $this->tag->linkTo(['/', 'Go Home', 'class' => 'btn btn-primary']); ?></div>
+</div>
